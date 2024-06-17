@@ -42,7 +42,7 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0,260)
-pen.write("Player A: 0 Player B: 0", algin = "center", font=("Courier", 24, "normal"))
+pen.write("Player A: 0 Player B: 0", align = "center", font=("Courier", 24, "normal"))
 
 #Functions
 def paddle_one_up():
@@ -87,38 +87,37 @@ while True:
     if ball.ycor() > 290:
        ball.sety(290)
        ball.dy *= -1
-       os.system('afplay bounce.wav&')
 
     elif ball.ycor() < -290:
        ball.sety(-290)
        ball.dy *= -1
-       os.system('afplay bounce.wav&')
+      
 
     #Left and right
-    if ball.ycor() > 350:
+    if ball.xcor() > 350:
        score_one += 1
        pen.clear()
        pen.write("Player A: {} Player B: {}".formate(score_one, score_two), align="center", 
                  font=("Courier", 24, "normal"))
-       ball.gotto(0,0)
-       ball.dy *= -1
+       ball.goto(0,0)
+       ball.dx *= -1
 
-    elif ball.ycor() < -350:
+    elif ball.xcor() < -350:
        score_two += 1
        pen.clear()
        pen.write("Player A: {} Player B: {}".formate(score_one, score_two), align="center", 
                  font=("Courier", 24, "normal"))
-       ball.gotto(0,0)
-       ball.dy *= -1
+       ball.goto(0,0)
+       ball.dx *= -1
 
     #paddle and ball collision
     if ball.xcor() < -340 and ball.ycor() < paddle_one.ycor() + 50 and ball.ycor() > paddle_one.ycor() - 50:
         ball.dx *= -1
-        os.system("afplay bounce.wav&")
+        
 
     elif ball.xcor() > 340 and ball.ycor() < paddle_two.ycor() + 50 and ball.ycor() > paddle_one.ycor() - 50:
         ball.dx *= -1
-        os.system("afplay bounce.wav&")
+        
 
 
 
